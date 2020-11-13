@@ -38,6 +38,7 @@ public class FileController {
         }
     }
 
+    @GetMapping("files")
     public ResponseEntity<List<ResponseFile>> getListFiles(){
 
         List <ResponseFile> files = fileStorageService.getAllFiles().map(dbFile -> {
@@ -57,6 +58,7 @@ public class FileController {
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
 
+    @GetMapping("files/{id}")
     public ResponseEntity<byte[]> getFile (@PathVariable String id) {
         FileDB fileDB = fileStorageService.getFile(id);
 
